@@ -1,0 +1,3 @@
+# Deversus
+
+Competitive coding game
