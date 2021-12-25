@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Provider;
 
 class User extends Authenticatable
 {
@@ -20,6 +21,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
+        'avatar_provider_id',
         'password',
     ];
 
@@ -29,8 +32,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'avatar_provider_id',
         'password',
         'remember_token',
+        'email_verified_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -41,4 +48,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'avatar',
+    ];
+
+    public function providers()
+    {
+        return $this->hasMany(Provider::class);
+    }
+
+    public function avatarProvider()
+    {
+        return $this->belongsTo(Provider::class);
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->avatarProvider()->firstOr(function () {
+            return ['avatar' => null]
+        })->avatar;
+    }
 }
