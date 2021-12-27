@@ -70,8 +70,12 @@ class User extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        return $this->avatarProvider()->firstOr(function () {
-            return ['avatar' => null];
-        })->avatar;
+        $avatar = $this->avatarProvider()->first();
+
+        if ($avatar) {
+            return $avatar->avatar;
+        }
+
+        return null;
     }
 }

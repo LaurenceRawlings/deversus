@@ -71,7 +71,7 @@ class AuthController extends Controller
 
         $token = $userCreated->createToken('auth-token')->plainTextToken;
 
-        if ($userExists) {
+        if (!$userExists) {
             $userCreated->update([
                 'avatar_provider_id' => $providerCreated->id
             ]);
