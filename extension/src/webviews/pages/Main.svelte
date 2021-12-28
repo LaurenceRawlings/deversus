@@ -1,8 +1,9 @@
 <script lang="ts">
     import Avatar from '../components/Avatar.svelte';
-    import { createEventDispatcher } from 'svelte';
-import type { User } from '../types';
+    import { createEventDispatcher, getContext } from 'svelte';
+    import type { User, Api } from '../types';
     const dispatch = createEventDispatcher();
+    const api: Api = getContext('api');
 
     export let user: User;
 </script>
@@ -12,9 +13,11 @@ import type { User } from '../types';
     <h2 class="mt-8">{user.name}</h2>
 </div>
 
-<button on:click={() => {
-    dispatch('logout');
-}}>Logout</button>
+<button
+    on:click={() => {
+        dispatch('logout');
+    }}>Logout</button
+>
 
 <style>
     .center {

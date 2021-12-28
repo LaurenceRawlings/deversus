@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, setContext } from 'svelte';
     import Login from '../pages/Login.svelte';
     import Main from '../pages/Main.svelte';
     import type { User } from '../types';
@@ -11,7 +11,6 @@
     $: {
         tsvscode.setState({ page });
     }
-
     onMount(async () => {
         window.addEventListener('message', async (event) => {
             const message = event.data;
@@ -19,7 +18,7 @@
                 case 'token':
                     accessToken = message.value;
                     if (accessToken !== '') {
-                        const response = await api('GET', '/user', accessToken);
+                        const response = await api('GET', '/user');
                         const data = await response.json();
                         user = data;
                     }
@@ -29,10 +28,9 @@
         tsvscode.postMessage({ type: 'get-token', value: undefined });
     });
 
-    async function api(
+    const api = async function (
         method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
         route: string,
-        accessToken: string,
     ): Promise<Response> {
         return fetch(`${apiBaseUrl}/api${route}`, {
             method: method,
@@ -43,6 +41,8 @@
             },
         });
     }
+
+    setContext('api', api);
 
     function logout() {
         accessToken = '';
