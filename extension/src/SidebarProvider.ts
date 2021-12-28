@@ -10,6 +10,20 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     constructor(private readonly _extensionUri: vscode.Uri) { }
 
+    public postMessage(type: string, value: any) {
+        this._view?.webview.postMessage({
+            type: type,
+            value: value,
+        });
+    }
+
+    public updateToken() {
+        this._view?.webview.postMessage({
+            type: "token",
+            value: TokenManager.getToken(),
+        });
+    }
+
     public resolveWebviewView(webviewView: vscode.WebviewView) {
         this._view = webviewView;
 
@@ -24,10 +38,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
             switch (data.type) {
                 case "authenticate": {
                     authenticate(() => {
-                        webviewView.webview.postMessage({
-                            type: "token",
-                            value: TokenManager.getToken(),
-                        });
+                        this.updateToken();
                     });
                     break;
                 }
