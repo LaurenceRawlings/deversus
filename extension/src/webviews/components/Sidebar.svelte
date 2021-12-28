@@ -15,23 +15,29 @@
             const message = event.data;
             switch (message.type) {
                 case 'token':
-                    accessToken = message.value;
-                    const response = await fetch(`${apiBaseUrl}/api/user`, {
-                        headers: {
-                            authorization: `Bearer ${accessToken}`,
-                        },
-                    });
+                    const response = await api("GET", "/user", message.value);
                     const data = await response.json();
-                    user = data.user;
+                    user = data;
                     loading = false;
             }
         });
         tsvscode.postMessage({ type: 'get-token', value: undefined });
     });
+
+    async function api(method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE", route: string, accessToken: string): Promise<Response> {
+        return fetch(`${apiBaseUrl}/api${route}`, {
+            method: method,
+            headers: {
+                // eslint-disable-next-line @typescript-eslint/naming-convention
+                'Accept': 'application/json;charset=UTF-8',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+    }
 </script>
 
 {#if loading}
-    <div>loading...</div>
+    <h1>Loading...</h1>
 {:else if user}
     {#if page === 'main'}
         <h1>Logged in!</h1>
@@ -43,7 +49,7 @@
             accessToken = '';
             user = null;
             tsvscode.postMessage({ type: 'logout', value: undefined });
-        }}>logout</button
+        }}>Logout</button
     >
 {:else}
     <button

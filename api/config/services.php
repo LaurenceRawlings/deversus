@@ -30,6 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'extension' => [
+        'callback_url' => env('EXTENTION_CALLBACK_URL', 'http://localhost:2222/auth'),
+    ],
+
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),

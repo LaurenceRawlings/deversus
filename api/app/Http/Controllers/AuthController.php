@@ -78,6 +78,7 @@ class AuthController extends Controller
             ]);
         }
 
-        return redirect("http://localhost:121212/auth/{$token}");
+        $callback = config('services.extension.callback_url');
+        return redirect("{$callback}/{$token}");
     }
 }
