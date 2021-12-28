@@ -11,6 +11,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Rules\AuthProviderRule;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
@@ -77,6 +78,6 @@ class AuthController extends Controller
             ]);
         }
 
-        return response()->json($userCreated, 200, ['Access-Token' => $token]);
+        return redirect("http://localhost:121212/auth/{$token}");
     }
 }

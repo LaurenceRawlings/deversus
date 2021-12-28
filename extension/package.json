@@ -10,15 +10,16 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:deversus.helloWorld",
-		"onView:deversus-sidebar"
-	],
+        "onCommand:vstodo.authenticate",
+        "onView:deversus-sidebar"
+    ],
     "main": "./dist/extension.js",
     "contributes": {
         "commands": [
             {
-                "command": "deversus.helloWorld",
-                "title": "Hello World"
+              "command": "deversus.authenticate",
+              "category": "Deversus",
+              "title": "Authenticate"
             }
         ],
         "viewsContainers": {
@@ -79,5 +80,9 @@
         "typescript": "^4.4.4",
         "webpack": "^5.52.1",
         "webpack-cli": "^4.8.0"
+    },
+    "dependencies": {
+        "@types/polka": "^0.5.4",
+        "polka": "^0.5.2"
     }
 }
