@@ -36,6 +36,10 @@
     }
 </script>
 
+<style>
+    
+</style>
+
 {#if loading}
     <h1>Loading...</h1>
 {:else if user}
