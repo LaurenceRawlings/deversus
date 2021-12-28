@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand("deversus.authenticate", () => {
-			authenticate(() => {
+			authenticate('github', () => {
 				sidebarProvider.updateToken();
 			});
 		})

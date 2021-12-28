@@ -3,7 +3,7 @@ import * as polka from "polka";
 import { apiBaseUrl } from "./constants";
 import { TokenManager } from "./TokenManager";
 
-export const authenticate = (fn: () => void) => {
+export const authenticate = (provider: string, callback: () => void) => {
     const app = polka();
 
     app.get('/auth/:token', async (req, res) => {
@@ -14,7 +14,7 @@ export const authenticate = (fn: () => void) => {
         }
 
         await TokenManager.setToken(decodeURI(token));
-        fn();
+        callback();
 
         res.end(`<h1>Auth was successful, you can close this now</h1>`);
 
@@ -24,7 +24,7 @@ export const authenticate = (fn: () => void) => {
         if (err) {
             vscode.window.showErrorMessage(err.message);
         } else {
-            vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(`${apiBaseUrl}/auth/github`));
+            vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(`${apiBaseUrl}/auth/${provider}`));
         }
     });
 };
