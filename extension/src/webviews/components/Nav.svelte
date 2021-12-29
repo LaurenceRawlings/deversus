@@ -11,7 +11,7 @@
 <div class="mt-16 center">
     <Avatar size={80} user={getUser()} />
     <span class="mt-8 name">{getUser().name}</span>
-    <span class="mt-4 rank">Global Ranking: <strong>#10293</strong></span>
+    <span class="mt-4 rank"><em>Global Ranking: <strong>#10293</strong></em></span>
     <div class="buttons mt-8">
         <button on:click={async () => console.log(await $api.get('/user'))} title="Account">
             <Icon width="20px" icon="user" />
