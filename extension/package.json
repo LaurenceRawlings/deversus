@@ -59,6 +59,7 @@
         "@rollup/plugin-node-resolve": "^13.1.1",
         "@rollup/plugin-typescript": "^8.3.0",
         "@tsconfig/svelte": "^3.0.0",
+        "@types/axios": "^0.14.0",
         "@types/glob": "^7.1.4",
         "@types/mocha": "^9.0.0",
         "@types/node": "14.x",
@@ -84,6 +85,9 @@
         "webpack-cli": "^4.8.0"
     },
     "dependencies": {
-        "polka": "^0.5.2"
+        "axios": "^0.24.0",
+        "laravel-echo": "^1.11.3",
+        "polka": "^0.5.2",
+        "pusher-js": "^7.0.3"
     }
 }

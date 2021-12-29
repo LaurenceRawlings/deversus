@@ -1,4 +1,5 @@
 export type User = {
+    id: number;
     name: string;
     avatar: string;
 };
@@ -9,5 +10,3 @@ export type Lobby = {
     countdown: number;
     users: User[];
 };
-
-export type Api = (method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE', route: string) => Promise<Response>;

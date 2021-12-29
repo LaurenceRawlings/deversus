@@ -2,7 +2,9 @@
     import { onMount, setContext } from 'svelte';
     import Login from '../pages/Login.svelte';
     import Main from '../pages/Main.svelte';
+    import { api, echo } from '../stores';
     import type { User } from '../types';
+
     let accessToken = '';
     let loading = true;
     let user: User | null = null;
@@ -11,6 +13,7 @@
     $: {
         tsvscode.setState({ page });
     }
+
     onMount(async () => {
         window.addEventListener('message', async (event) => {
             const message = event.data;
@@ -18,43 +21,34 @@
                 case 'token':
                     accessToken = message.value;
                     if (accessToken !== '') {
-                        const response = await api('GET', '/user');
-                        const data = await response.json();
+                        $api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+                        const response = await $api.get('/user');
+                        const data = await response.data;
                         user = data;
+
+                        $echo.private(`User.${user?.id}`).notification((notification: any) => {
+                            console.log(notification);
+                        });
                     }
                     loading = false;
             }
         });
+
         tsvscode.postMessage({ type: 'get-token', value: undefined });
     });
-
-    const api = async function (
-        method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
-        route: string,
-    ): Promise<Response> {
-        return fetch(`${apiBaseUrl}/api${route}`, {
-            method: method,
-            headers: {
-                // eslint-disable-next-line @typescript-eslint/naming-convention
-                Accept: 'application/json;charset=UTF-8',
-                Authorization: `Bearer ${accessToken}`,
-            },
-        });
-    }
-
-    setContext('api', api);
-    setContext('user', { getUser: () => user });
 
     function logout() {
         accessToken = '';
         user = null;
         tsvscode.postMessage({ type: 'logout', value: undefined });
     }
+
+    setContext('user', { getUser: () => user });
 </script>
 
 {#if loading}
     <h1>Loading...</h1>
-{:else if user }
+{:else if user}
     {#if page === 'main'}
         <Main on:logout={logout} />
     {:else}

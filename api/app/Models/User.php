@@ -32,7 +32,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'id',
         'email',
         'avatar_provider_id',
         'password',
@@ -59,6 +58,16 @@ class User extends Authenticatable
     protected $appends = [
         'avatar',
     ];
+
+    /**
+     * The channels the user receives notification broadcasts on.
+     *
+     * @return string
+     */
+    public function receivesBroadcastNotificationsOn(): string
+    {
+        return 'User.' . $this->id;
+    }
 
     public function providers()
     {

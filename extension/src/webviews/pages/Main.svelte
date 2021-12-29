@@ -1,32 +1,37 @@
 <script lang="ts">
     import Avatar from '../components/Avatar.svelte';
     import { createEventDispatcher, getContext } from 'svelte';
-    import type { User, Api } from '../types';
+    import type { User } from '../types';
+    import { api } from '../stores';
     import Icon from '../components/Icon.svelte';
     import LobbyView from '../components/LobbyView.svelte';
     import Player from '../components/Player.svelte';
     const dispatch = createEventDispatcher();
-    const api: Api = getContext('api');
     const { getUser } = getContext('user');
 
     let testUsers: User[] = [
         {
+            id: 0,
             name: 'Samuel-Roach',
             avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Samuel+Roach',
         },
         {
+            id: 0,
             name: 'FraserGrandfield',
             avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Fraser+Grandfield',
         },
         {
+            id: 0,
             name: 'TobyPlunkett',
             avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Toby+Plunkett',
         },
         {
+            id: 0,
             name: 'jamesreprise',
             avatar: 'https://eu.ui-avatars.com/api/?background=random&name=jamesreprise',
         },
         {
+            id: 0,
             name: 'SirGandhi',
             avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Sir+Gandhi',
         },
@@ -37,7 +42,7 @@
     <Avatar size={80} user={getUser()} />
     <span class="mt-8 name">{getUser().name}</span>
     <div class="buttons mt-8">
-        <button title="Account">
+        <button on:click={async () => console.log(await $api.get('/user'))} title="Account">
             <Icon width="20px" icon="user" />
         </button>
         <button title="Game History">
