@@ -17,6 +17,36 @@
             fill="currentColor"
         /></svg
     >
+{:else if icon === 'history'}
+    <svg {width} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+        ><path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M13.507 12.324a7 7 0 0 0 .065-8.56A7 7 0 0 0 2 4.393V2H1v3.5l.5.5H5V5H2.811a6.008 6.008 0 1 1-.135 5.77l-.887.462a7 7 0 0 0 11.718 1.092zm-3.361-.97l.708-.707L8 7.792V4H7v4l.146.354 3 3z"
+            fill="currentColor"
+        /></svg
+    >
+{:else if icon === 'trophy'}
+    <svg {width} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        ><path
+            d="M21 4h-3V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v1H3a1 1 0 0 0-1 1v3c0 4.31 1.799 6.91 4.819 7.012A6.001 6.001 0 0 0 11 17.91V20H9v2h6v-2h-2v-2.09a6.01 6.01 0 0 0 4.181-2.898C20.201 14.91 22 12.31 22 8V5a1 1 0 0 0-1-1zM4 8V6h2v6.83C4.216 12.078 4 9.299 4 8zm8 8c-2.206 0-4-1.794-4-4V4h8v8c0 2.206-1.794 4-4 4zm6-3.17V6h2v2c0 1.299-.216 4.078-2 4.83z"
+            fill="currentColor"
+        /></svg
+    >
+{:else if icon === 'user'}
+    <svg {width} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        ><path
+            d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"
+            fill="currentColor"
+        /></svg
+    >
+{:else if icon === 'logout'}
+    <svg {width} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        ><path d="M16 13v-2H7V8l-5 4 5 4v-3z" fill="currentColor" /><path
+            d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"
+            fill="currentColor"
+        /></svg
+    >
 {:else}
     <svg {width} role="img" viewBox="0 0 408 280" xmlns="http://www.w3.org/2000/svg"
         ><title>Deversus</title>

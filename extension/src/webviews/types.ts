@@ -3,4 +3,11 @@ export type User = {
     avatar: string;
 };
 
+export type Lobby = {
+    accessCode: string;
+    status: string;
+    countdown: number;
+    users: User[];
+};
+
 export type Api = (method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE', route: string) => Promise<Response>;
