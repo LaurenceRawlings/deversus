@@ -27,7 +27,7 @@
                 {
                     "id": "deversus-sidebar-view",
                     "title": "Deversus",
-                    "icon": "media/flame.svg"
+                    "icon": "media/deversus.svg"
                 }
             ]
         },
@@ -37,7 +37,7 @@
                     "type": "webview",
                     "id": "deversus-sidebar",
                     "name": "Deversus",
-                    "icon": "media/flame.svg",
+                    "icon": "media/deversus.svg",
                     "contextualTitle": "Deversus"
                 }
             ]
