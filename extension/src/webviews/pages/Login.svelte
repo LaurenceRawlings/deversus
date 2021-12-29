@@ -1,16 +1,25 @@
 <script lang="ts">
-    function authenticate(provider: string) {
-        tsvscode.postMessage({ type: 'authenticate', value: provider });
-    }
+    import AuthButton from '../components/AuthButton.svelte';
+    import Icon from '../components/Icon.svelte';
 </script>
 
-<h1>De[vs]</h1>
-<p>
-    Welcome to Deversus, the compeitive coding game built right into VSCode. To get started login with one of the
+<div class="center mt-16">
+    <Icon width="100px" icon="deversus" />
+</div>
+<p class="mt-16">
+    Welcome to <strong>Deversus</strong>, the compeitive coding game built right into VSCode. To get started login with one of the
     providers below.
 </p>
-<button
-    on:click={() => {
-        authenticate('github');
-    }}>Login with GitHub</button
->
+
+<div class="mt-16 buttons">
+    <AuthButton provider="GitHub" />
+    <AuthButton provider="Google" />
+</div>
+
+<style>
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+</style>

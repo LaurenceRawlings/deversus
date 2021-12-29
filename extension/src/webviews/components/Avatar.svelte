@@ -8,5 +8,7 @@
 <style>
     img {
         border-radius: 50%;
+        border: 2px solid currentColor;
+        padding: 2px;
     }
 </style>
