@@ -1,13 +1,7 @@
 <script lang="ts">
-    import Avatar from '../components/Avatar.svelte';
-    import { createEventDispatcher, getContext } from 'svelte';
     import type { User } from '../types';
-    import { api } from '../stores';
-    import Icon from '../components/Icon.svelte';
     import LobbyView from '../components/LobbyView.svelte';
     import Player from '../components/Player.svelte';
-    const dispatch = createEventDispatcher();
-    const { getUser } = getContext('user');
 
     let testUsers: User[] = [
         {
@@ -37,30 +31,6 @@
         },
     ];
 </script>
-
-<div class="mt-16 center">
-    <Avatar size={80} user={getUser()} />
-    <span class="mt-8 name">{getUser().name}</span>
-    <div class="buttons mt-8">
-        <button on:click={async () => console.log(await $api.get('/user'))} title="Account">
-            <Icon width="20px" icon="user" />
-        </button>
-        <button title="Game History">
-            <Icon width="20px" icon="history" />
-        </button>
-        <button title="Leaderboards">
-            <Icon width="20px" icon="trophy" />
-        </button>
-        <button
-            title="Log out"
-            on:click={() => {
-                dispatch('logout');
-            }}
-        >
-            <Icon width="20px" icon="logout" />
-        </button>
-    </div>
-</div>
 
 <h1 class="mt-16">Join a Game</h1>
 <h2 class="mt-8">Public lobby</h2>
@@ -93,18 +63,6 @@
 </div>
 
 <style>
-    .buttons {
-        display: flex;
-        gap: 8px;
-    }
-
-    .buttons > button {
-        padding: 4px;
-        display: grid;
-        justify-content: center;
-        align-content: center;
-    }
-
     .access {
         display: flex;
         gap: 8px;
@@ -114,10 +72,6 @@
         text-align: center;
         letter-spacing: 1ch;
         text-transform: uppercase;
-    }
-
-    .name {
-        font-size: x-large;
     }
 
     .friends {

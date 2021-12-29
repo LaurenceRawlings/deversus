@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount, setContext } from 'svelte';
+import Nav from '../components/Nav.svelte';
     import Login from '../pages/Login.svelte';
     import Main from '../pages/Main.svelte';
     import { api, echo } from '../stores';
@@ -25,7 +26,7 @@
                         const response = await $api.get('/user');
                         const data = await response.data;
                         user = data;
-
+                        $echo.connect();
                         $echo.private(`User.${user?.id}`).notification((notification: any) => {
                             console.log(notification);
                         });
@@ -39,6 +40,7 @@
 
     function logout() {
         accessToken = '';
+        $echo.disconnect();
         user = null;
         tsvscode.postMessage({ type: 'logout', value: undefined });
     }
@@ -49,8 +51,9 @@
 {#if loading}
     <h1>Loading...</h1>
 {:else if user}
+    <Nav on:logout={logout} />
     {#if page === 'main'}
-        <Main on:logout={logout} />
+        <Main />
     {:else}
         <h1>Other pages</h1>
     {/if}
