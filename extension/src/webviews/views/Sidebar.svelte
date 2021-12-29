@@ -43,6 +43,7 @@
     }
 
     setContext('api', api);
+    setContext('user', { getUser: () => user });
 
     function logout() {
         accessToken = '';
@@ -55,7 +56,7 @@
     <h1>Loading...</h1>
 {:else if user }
     {#if page === 'main'}
-        <Main on:logout={logout} {user} />
+        <Main on:logout={logout} />
     {:else}
         <h1>Other pages</h1>
     {/if}

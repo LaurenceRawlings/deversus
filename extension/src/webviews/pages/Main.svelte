@@ -7,8 +7,7 @@
     import Player from '../components/Player.svelte';
     const dispatch = createEventDispatcher();
     const api: Api = getContext('api');
-
-    export let user: User;
+    const { getUser } = getContext('user');
 
     let testUsers: User[] = [
         {
@@ -35,8 +34,8 @@
 </script>
 
 <div class="mt-16 center">
-    <Avatar size={80} {user} />
-    <span class="mt-8 name">{user.name}</span>
+    <Avatar size={80} user={getUser()} />
+    <span class="mt-8 name">{getUser().name}</span>
     <div class="buttons mt-8">
         <button title="Account">
             <Icon width="20px" icon="user" />
@@ -59,7 +58,7 @@
 </div>
 
 <h1 class="mt-16">Join a Game</h1>
-<h2 class="mt-16">Public lobby</h2>
+<h2 class="mt-8">Public lobby</h2>
 <div class="mt-8">
     <LobbyView
         lobby={{
@@ -71,7 +70,7 @@
     />
 </div>
 <button class="mt-8">Join</button>
-<h2 class="mt-16">Custom lobby</h2>
+<h2 class="mt-8">Custom lobby</h2>
 <div class="mt-8 access">
     <input class="access-code" maxlength="4" title="Access Code" placeholder="CODE" />
     <button>Join</button>
