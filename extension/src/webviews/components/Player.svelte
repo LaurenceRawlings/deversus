@@ -33,8 +33,4 @@
         padding-left: 8px;
         padding-right: 8px;
     }
-
-    span {
-        font-size: medium;
-    }
 </style>
