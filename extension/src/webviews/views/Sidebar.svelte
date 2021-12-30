@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount, setContext } from 'svelte';
-import Nav from '../components/Nav.svelte';
+    import Nav from '../components/Nav.svelte';
     import Login from '../pages/Login.svelte';
     import Main from '../pages/Main.svelte';
     import { api, echo } from '../stores';
@@ -23,13 +23,20 @@ import Nav from '../components/Nav.svelte';
                     accessToken = message.value;
                     if (accessToken !== '') {
                         $api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-                        const response = await $api.get('/user');
-                        const data = await response.data;
-                        user = data;
-                        $echo.connect();
-                        $echo.private(`User.${user?.id}`).notification((notification: any) => {
-                            console.log(notification);
-                        });
+                        await $api
+                            .get('/user')
+                            .then((response) => {
+                                const data = response.data;
+                                user = data;
+                                $echo.connect();
+                                $echo.private(`User.${user?.id}`).notification((notification: any) => {
+                                    console.log(notification);
+                                });
+                            })
+                            .catch(() => {
+                                logout();
+                                return;
+                            });
                     }
                     loading = false;
             }
