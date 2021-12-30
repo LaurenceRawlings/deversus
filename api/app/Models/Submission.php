@@ -31,6 +31,10 @@ class Submission extends Pivot
         'placed',
     ];
 
+    protected $casts = [
+        'time' => 'datetime',
+    ];
+
     /**
      * Get the user that owns the Submission
      *

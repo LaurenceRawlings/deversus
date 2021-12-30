@@ -32,6 +32,11 @@ class Game extends Model
         'countdown',
     ];
 
+    protected $casts = [
+        'start' => 'datetime',
+        'end' => 'datetime',
+    ];
+
     /**
      * Get the question that owns the Game
      *
