@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use \Torann\GeoIP\Facades\GeoIP;
 use App\Models\Provider;
 use App\Models\Game;
 use App\Models\Submission;
@@ -63,6 +64,7 @@ class User extends Authenticatable
         'avatar',
         'current_game',
         'rank',
+        'region',
     ];
 
     /**
@@ -126,5 +128,14 @@ class User extends Authenticatable
         }
 
         return null;
+    }
+
+    public function getRegionAttribute()
+    {
+        $location = GeoIP::getLocation($this->ip);
+        return [
+            'iso' => strtolower($location->iso_code),
+            'name' => $location->country,
+        ];
     }
 }

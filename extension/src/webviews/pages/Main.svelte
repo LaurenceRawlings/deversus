@@ -7,27 +7,47 @@
         {
             id: 0,
             name: 'Samuel-Roach',
-            avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Samuel+Roach',
+            avatar: null,
+            region: {
+                iso: 'us',
+                name: 'United States',
+            }
         },
         {
             id: 0,
             name: 'FraserGrandfield',
-            avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Fraser+Grandfield',
+            avatar: null,
+            region: {
+                iso: 'no',
+                name: 'Norway',
+            }
         },
         {
             id: 0,
             name: 'TobyPlunkett',
-            avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Toby+Plunkett',
+            avatar: null,
+            region: {
+                iso: 'ca',
+                name: 'Canada',
+            }
         },
         {
             id: 0,
             name: 'jamesreprise',
-            avatar: 'https://eu.ui-avatars.com/api/?background=random&name=jamesreprise',
+            avatar: null,
+            region: {
+                iso: 'au',
+                name: 'Australia',
+            }
         },
         {
             id: 0,
             name: 'SirGandhi',
-            avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Sir+Gandhi',
+            avatar: null,
+            region: {
+                iso: 'pl',
+                name: 'Poland',
+            }
         },
     ];
 </script>
