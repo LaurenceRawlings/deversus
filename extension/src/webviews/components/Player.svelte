@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { User } from "../types";
     import Avatar from "./Avatar.svelte";
+    import Icon from "./Icon.svelte";
 
     export let user: User;
     export let friends: boolean = false;
@@ -14,7 +15,9 @@
     </div>
     <div class="end player">
         {#if friends}
-        <button class="ml-8">x</button>
+        <button class="ml-8 round remove">
+            <Icon width="20px" icon="close" />
+        </button>
         {/if}
     </div>
 </div>
@@ -23,6 +26,11 @@
     .player {
         display: flex;
         align-items: center;
+    }
+
+    .remove {
+        width: 28px;
+        height: 28px;
     }
 
     .end {

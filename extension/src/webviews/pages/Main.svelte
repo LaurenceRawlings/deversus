@@ -53,7 +53,7 @@
 </script>
 
 <h1 class="mt-16">Join a Game</h1>
-<h2 class="mt-8">Public lobby</h2>
+<h2 class="mt-8">Public game</h2>
 <div class="mt-8">
     <LobbyView
         lobby={{
@@ -64,11 +64,10 @@
         }}
     />
 </div>
-<button class="mt-8">Join</button>
-<h2 class="mt-8">Custom lobby</h2>
+<h2 class="mt-8">Custom game</h2>
 <div class="mt-8 access">
     <input class="access-code" maxlength="4" title="Access Code" placeholder="CODE" />
-    <button>Join</button>
+    <button class="join">Join</button>
 </div>
 
 <div class="mt-8">
@@ -85,13 +84,19 @@
 <style>
     .access {
         display: flex;
-        gap: 8px;
     }
 
     .access-code {
         text-align: center;
         letter-spacing: 1ch;
         text-transform: uppercase;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .join {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
 
     .friends {

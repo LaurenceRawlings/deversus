@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Lobby } from "../types";
     import Avatar from "./Avatar.svelte";
+import Icon from "./Icon.svelte";
 
     export let lobby: Lobby;
 </script>
@@ -10,7 +11,9 @@
         <Avatar size={50} {user} />
     {/each}
     {#each Array(8 - lobby.users.length) as _, i }
-        <div class="empty"></div>
+        <button class="empty round">
+            <Icon width="20" icon="add" />
+        </button>
     {/each}
 </div>
 
@@ -22,9 +25,9 @@
     }
 
     .empty {
-        border-radius: 50%;
         background: var(--vscode-input-background);
         width: 50px;
         height: 50px;
+        color: var(--vscode-input-placeholderForeground);
     }
 </style>
