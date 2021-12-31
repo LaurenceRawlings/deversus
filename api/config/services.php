@@ -32,6 +32,7 @@ return [
 
     'extension' => [
         'callback_url' => env('EXTENTION_CALLBACK_URL', 'http://localhost:2222/auth'),
+        'public_game_code' => env('PUBLIC_GAME_CODE', 'public'),
     ],
 
     'github' => [
