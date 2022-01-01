@@ -69,27 +69,27 @@ class Game extends Model
 
     public function getStatusAttribute()
     {
-        if ($this->start && $this->end) {
+        if (!$this->end) {
+            return 'waiting';
+        }
+
+        if ($this->end->isPast()) {
             return 'finished';
         }
 
-        if ($this->start) {
-            return 'started';
-        }
-
-        return 'waiting';
+        return 'started';
     }
 
     public function getCountdownAttribute()
     {
-        if ($this->start && $this->end) {
-            return 0;
+        if ($this->end && $this->end->isFuture()) {
+            return $this->end->diffInSeconds(now());
         }
 
-        if ($this->start) {
+        if ($this->start && $this->start->isFuture()) {
             return $this->start->diffInSeconds(now());
         }
 
-        return 0;
+        return null;
     }
 }

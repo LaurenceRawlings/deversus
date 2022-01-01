@@ -20,7 +20,7 @@ class CreateSubmissionsTable extends Migration
             $table->foreignIdFor(Game::class)->constrained();
             $table->foreignIdFor(User::class)->constrained();
             $table->text('code')->default('');
-            $table->timestamp('time')->nullable();
+            $table->integer('time')->nullable();
             $table->float('percentage_tests_passed')->default(0);
         });
     }

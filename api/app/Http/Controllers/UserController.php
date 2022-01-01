@@ -9,6 +9,7 @@ class UserController extends Controller
     public function index(Request $request) {
         $user = $request->user();
         $user->forceFill(['ip' => $request->ip()])->save();
+        $user->currentGameId = $user->currentGame;
         return $user;
     }
 }

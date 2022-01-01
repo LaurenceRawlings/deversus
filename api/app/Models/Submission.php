@@ -13,6 +13,8 @@ class Submission extends Pivot
 {
     use HasFactory;
 
+    protected $table = 'submissions';
+
     public $timestamps = false;
     public $incrementing = true;
 
@@ -29,10 +31,6 @@ class Submission extends Pivot
 
     protected $appends = [
         'placed',
-    ];
-
-    protected $casts = [
-        'time' => 'datetime',
     ];
 
     /**
@@ -57,7 +55,7 @@ class Submission extends Pivot
 
     public function getPlacedAttribute()
     {
-        $place = $this->game->submissions->orderByDesc('percentage_tests_passed')->orderByAsc('time')->search($this);
+        $place = $this->game->submissions()->without('placed')->get()->sortByDesc('percentage_tests_passed')->sortBy('time')->search($this);
 
         if ($place !== false) {
             return $place + 1;

@@ -111,7 +111,7 @@ class User extends Authenticatable
 
     public function getCurrentGameAttribute()
     {
-        $game = $this->games()->get()->where('status', '=', 'started')->first();
+        $game = $this->games()->get()->where('status', 'started')->where('status', 'waiting')->first();
 
         if ($game) {
             return $game->id;
