@@ -18,7 +18,7 @@
         /></svg
     >
 {:else if icon === 'history'}
-    <svg {width} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+    <svg {width} role="img" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
         ><path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -27,28 +27,28 @@
         /></svg
     >
 {:else if icon === 'trophy'}
-    <svg {width} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+    <svg {width} role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path
             d="M21 4h-3V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v1H3a1 1 0 0 0-1 1v3c0 4.31 1.799 6.91 4.819 7.012A6.001 6.001 0 0 0 11 17.91V20H9v2h6v-2h-2v-2.09a6.01 6.01 0 0 0 4.181-2.898C20.201 14.91 22 12.31 22 8V5a1 1 0 0 0-1-1zM4 8V6h2v6.83C4.216 12.078 4 9.299 4 8zm8 8c-2.206 0-4-1.794-4-4V4h8v8c0 2.206-1.794 4-4 4zm6-3.17V6h2v2c0 1.299-.216 4.078-2 4.83z"
             fill="currentColor"
         /></svg
     >
 {:else if icon === 'user'}
-    <svg {width} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+    <svg {width} role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path
             d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"
             fill="currentColor"
         /></svg
     >
 {:else if icon === 'logout'}
-    <svg {width} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+    <svg {width} role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path d="M16 13v-2H7V8l-5 4 5 4v-3z" fill="currentColor" /><path
             d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"
             fill="currentColor"
         /></svg
     >
 {:else if icon === 'close'}
-    <svg {width} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+    <svg {width} role="img" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
         ><path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -57,9 +57,20 @@
         /></svg
     >
 {:else if icon === 'add'}
-    <svg {width} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-        ><path 
-            d="M14 7v1H8v6H7V8H1V7h6V1h1v6h6z" 
+    <svg {width} role="img" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        ><path d="M14 7v1H8v6H7V8H1V7h6V1h1v6h6z" fill="currentColor" /></svg
+    >
+{:else if icon === 'gitlab'}
+    <svg {width} role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        ><title>GitLab</title><path
+            d="M4.845.904c-.435 0-.82.28-.955.692C2.639 5.449 1.246 9.728.07 13.335a1.437 1.437 0 00.522 1.607l11.071 8.045c.2.145.472.144.67-.004l11.073-8.04a1.436 1.436 0 00.522-1.61c-1.285-3.942-2.683-8.256-3.817-11.746a1.004 1.004 0 00-.957-.684.987.987 0 00-.949.69l-2.405 7.408H8.203l-2.41-7.408a.987.987 0 00-.942-.69h-.006zm-.006 1.42l2.173 6.678H2.675zm14.326 0l2.168 6.678h-4.341zm-10.593 7.81h6.862c-1.142 3.52-2.288 7.04-3.434 10.559L8.572 10.135zm-5.514.005h4.321l3.086 9.5zm13.567 0h4.325c-2.467 3.17-4.95 6.328-7.411 9.502 1.028-3.167 2.059-6.334 3.086-9.502zM2.1 10.762l6.977 8.947-7.817-5.682a.305.305 0 01-.112-.341zm19.798 0l.952 2.922a.305.305 0 01-.11.341v.002l-7.82 5.68.026-.035z"
+            fill="currentColor"
+        /></svg
+    >
+{:else if icon === 'bitbucket'}
+    <svg {width} role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        ><title>Bitbucket</title><path
+            d="M.778 1.213a.768.768 0 00-.768.892l3.263 19.81c.084.5.515.868 1.022.873H19.95a.772.772 0 00.77-.646l3.27-20.03a.768.768 0 00-.768-.891zM14.52 15.53H9.522L8.17 8.466h7.561z"
             fill="currentColor"
         /></svg
     >

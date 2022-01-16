@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'index']);
 
     Route::get('/game', [GameController::class, 'index']);
-    Route::get('/game/join/{code}', [GameController::class, 'join']);
+    Route::get('/game/join/{game:code}', [GameController::class, 'join']);
 });

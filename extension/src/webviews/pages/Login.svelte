@@ -13,6 +13,8 @@
 
 <div class="mt-16 buttons">
     <AuthButton provider="GitHub" />
+    <AuthButton provider="GitLab" />
+    <AuthButton provider="BitBucket" />
     <AuthButton provider="Google" />
 </div>
 
@@ -20,6 +22,6 @@
     .buttons {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 16px;
     }
 </style>

@@ -10,6 +10,7 @@ export type User = {
 };
 
 export type Game = {
+    id: number;
     code: string | null;
     status: string;
     countdown: number | null;

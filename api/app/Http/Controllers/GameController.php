@@ -20,12 +20,10 @@ class GameController extends Controller
         return $publicGame;
     }
 
-    public function join(Request $request)
+    public function join(Game $game)
     {
-        $game = Game::where('code', $request->code)->with('users')->firstOrFail();
-
         $game->users()->attach(auth()->user());
 
-        return $game->refresh();
+        return Game::find($game->id)->with('users')->first();
     }
 }

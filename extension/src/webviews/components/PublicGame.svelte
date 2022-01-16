@@ -1,5 +1,5 @@
 <script lang="ts">
-import { getContext } from 'svelte';
+    import { getContext } from 'svelte';
 
     import { api } from '../stores';
 
@@ -20,8 +20,9 @@ import { getContext } from 'svelte';
     }
 
     async function join() {
-        await $api.get('/game/join/public').then((res) => {            
-            game = res.data;          
+        await $api.get('/game/join/public').then((res) => {
+            game = res.data;
+            getUser().currentGameId = game.id;
         });
         readOnly = true;
     }
@@ -46,6 +47,11 @@ import { getContext } from 'svelte';
     {#if game.countdown}
         <Countdown countdown={game.countdown} />
     {/if}
+    {#if getUser().currentGameId === game.id}
+        <button on:click={() => $api.get('/game/leave')} class="round leave" title="Leave">
+            <Icon width="20" icon="close" />
+        </button>
+    {/if}
 </div>
 
 <style>
@@ -61,5 +67,10 @@ import { getContext } from 'svelte';
         height: 50px;
         color: var(--vscode-input-placeholderForeground);
         border-radius: 50%;
+    }
+
+    .leave {
+        width: 50px;
+        height: 50px;
     }
 </style>
